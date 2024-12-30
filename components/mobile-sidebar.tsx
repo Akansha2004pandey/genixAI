@@ -1,15 +1,18 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Button } from './ui/button'
 import { Menu } from 'lucide-react'
 import { Sheet, SheetTrigger ,SheetContent} from '@/components/ui/sheet' 
 import SideBar from './SideBar'
-const MobileSidebar = () => {
+import { ApiError } from 'next/dist/server/api-utils'
+const MobileSidebar = ({apiLimit=0}:{apiLimit:number}) => {
     const [isMounted, setIsMounted] = React.useState(false);
     useEffect(() => {
       setIsMounted(true);
     }, []);
+
   if (!isMounted) return null;
+  
   return (
     
         <Sheet>
@@ -19,7 +22,7 @@ const MobileSidebar = () => {
        </Button>
        </SheetTrigger>
        <SheetContent side="left" className='p-0' >
-        <SideBar/>
+        <SideBar apiLimit={apiLimit}/>
        </SheetContent>
        </Sheet>
     
