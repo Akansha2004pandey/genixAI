@@ -19,8 +19,10 @@ import BotAvatar from '@/components/BotAvatar';
 import Markdown from 'react-markdown';
 import { Select, SelectValue , SelectContent, SelectTrigger, SelectItem} from '@/components/ui/select';
 import { amountOptions, resolutionOptions} from './constants'; 
+import { useProModalStore } from '@/hooks/use-pro-modal';
 const ImagePage = () => {
     const router=useRouter();
+    const proModal=useProModalStore();
    const [images,setImages]=useState<string[]>([]);
     const form=useForm<z.infer<typeof formSchema>>({
         resolver:zodResolver(formSchema),
@@ -47,6 +49,10 @@ const ImagePage = () => {
         catch(error){
             console.log("hello there is some problem")
             console.log(error);
+            if(error?.response?.status===403){
+              proModal.onOpen();
+
+          }
         }
         finally{
              router.refresh();

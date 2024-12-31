@@ -5,12 +5,12 @@ import { MAX_FREE_COUNTS } from '@/constants'
 import { Progress } from './ui/progress'
 import { Button } from './ui/button'
 import { Zap } from 'lucide-react'
-
+import { useProModalStore } from '@/hooks/use-pro-modal'
 interface FreeCounterProps{
    apiLimit:number;
 }
 export const FreeCounter = ({apiLimit=0}:FreeCounterProps) => {
-  
+  const proModal=useProModalStore();
   console.log(apiLimit,"free counter");
   console.log(apiLimit);
   return (
@@ -28,7 +28,7 @@ export const FreeCounter = ({apiLimit=0}:FreeCounterProps) => {
 
 
           </div>
-          <Button className='w-full' variant={'premium'}>
+          <Button onClick={proModal.onOpen} className='w-full' variant={'premium'}>
             Update
             <Zap className='ml-2 h-4 w-4 fill-white'/>
           </Button>

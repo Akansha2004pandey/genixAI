@@ -12,9 +12,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Loader from "@/components/ui/loader";
 import { Music } from "lucide-react";
+import { useProModalStore } from "@/hooks/use-pro-modal";
 
 const AudioPage = () => {
   const router = useRouter();
+  const proModal=useProModalStore();
   const [music, setMusic] = useState<string>();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,6 +39,10 @@ const AudioPage = () => {
       form.reset();
     } catch (error) {
       console.error("Error occurred:", error);
+      if(error?.response?.status===403){
+        proModal.onOpen();
+
+    }
     } finally {
       router.refresh();
     }

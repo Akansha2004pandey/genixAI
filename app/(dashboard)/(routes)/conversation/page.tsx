@@ -17,8 +17,10 @@ import UserAvatar from '@/components/userAvatar';
 import Loader from '@/components/ui/loader';
 import BotAvatar from '@/components/BotAvatar';
 import Markdown from 'react-markdown';
+import { useProModalStore } from '@/hooks/use-pro-modal'
 const ConversationPage = () => {
     const router=useRouter();
+    const proModal=useProModalStore();
     const [messages,setMessages]=useState<ChatCompletionRequestMessage[]>([]);
     const form=useForm<z.infer<typeof formSchema>>({
         resolver:zodResolver(formSchema),
@@ -42,6 +44,7 @@ const ConversationPage = () => {
             const assistantMessage = response.data.message;
 
     setMessages((current) => [
+
       ...current,
       userMessage,
       { role: "assistant", content: assistantMessage }
@@ -52,8 +55,15 @@ const ConversationPage = () => {
         catch(error){
             console.log("hello there is some problem")
             console.log(error);
+            if(error?.response?.status===403){
+                proModal.onOpen();
+
+            }
+
+
         }
         finally{
+             console.log("refreshing");
              router.refresh();
         } 
     }
