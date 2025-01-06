@@ -8,6 +8,9 @@ import { MessageSquare, Music, ImageIcon, VideoIcon, Code, Check, Zap } from "lu
 import { Card } from "./ui/card";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
+import axios from "axios";
+import { useState } from "react";
+import { set } from "zod";
 const tools=[
     {
       label:"Conversation",
@@ -47,6 +50,18 @@ const tools=[
   ]
 export const ProModal = () => {
    const proModal=useProModalStore();
+   const  [loading, setLoading]=useState(false);
+   const onSubscribe=async ()=>{
+        try{
+            setLoading(true);
+            const response=await axios.get("/api/stripe");
+            window.location.href=(await response).data.url;
+        }catch(error){
+                console.log(error);
+        }finally{
+           setLoading(false);
+        }
+   }
     return (
         <>
         <Dialog open={proModal.isOpen} onOpenChange={proModal.onClose}>
@@ -84,7 +99,7 @@ export const ProModal = () => {
                     </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
-                    <Button className="w-full"
+                    <Button className="w-full" onClick={onSubscribe}
                     size="lg" variant="premium">Upgrade
                         <Zap className="ml-2 h-4 w-4 fill-white"/>
                     </Button>

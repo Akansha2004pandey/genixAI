@@ -29,7 +29,7 @@ export const FreeCounter = ({apiLimit=0}:FreeCounterProps) => {
 
           </div>
           <Button onClick={proModal.onOpen} className='w-full' variant={'premium'}>
-            Update
+            Upgrade
             <Zap className='ml-2 h-4 w-4 fill-white'/>
           </Button>
 
