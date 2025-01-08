@@ -14,6 +14,7 @@ import Loader from "@/components/ui/loader";
 import { Music } from "lucide-react";
 import { useProModalStore } from "@/hooks/use-pro-modal";
 import {toast} from "react-hot-toast";
+import { AxiosError } from "axios";
 const AudioPage = () => {
   const router = useRouter();
   const proModal=useProModalStore();
@@ -39,7 +40,7 @@ const AudioPage = () => {
       form.reset();
     } catch (error) {
       console.error("Error occurred:", error);
-      if(error?.response?.status===403){
+      if((error as AxiosError).response?.status===403){
         proModal.onOpen();
 
     }else{
