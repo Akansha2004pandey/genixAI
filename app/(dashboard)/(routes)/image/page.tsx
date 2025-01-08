@@ -21,6 +21,7 @@ import {toast} from "react-hot-toast";
 import { Select, SelectValue , SelectContent, SelectTrigger, SelectItem} from '@/components/ui/select';
 import { amountOptions, resolutionOptions} from './constants'; 
 import { useProModalStore } from '@/hooks/use-pro-modal';
+import { AxiosError } from 'axios';
 const ImagePage = () => {
     const router=useRouter();
     const proModal=useProModalStore();
@@ -50,7 +51,7 @@ const ImagePage = () => {
         catch(error){
             console.log("hello there is some problem")
             console.log(error);
-            if(error?.response?.status===403){
+            if((error as AxiosError)?.response?.status===403){
               proModal.onOpen();
 
           }else{

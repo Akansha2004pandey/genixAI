@@ -3,7 +3,7 @@ import React from 'react'
 import Heading from '@/components/Heading'
 import {useForm} from "react-hook-form";
 import {MessageSquare, User} from 'lucide-react'
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import * as z from "zod";
 import {useRouter} from "next/navigation";
 import {formSchema} from './constants'
@@ -56,7 +56,7 @@ const ConversationPage = () => {
         catch(error){
             console.log("hello there is some problem")
             console.log(error);
-            if(error?.response?.status===403){
+            if((error as AxiosError)?.response?.status===403){
                 proModal.onOpen();
 
             }else{
