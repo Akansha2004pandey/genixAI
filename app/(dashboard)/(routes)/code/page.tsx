@@ -135,20 +135,23 @@ const CodePage = () => {
       >
         <div className='flex px-2 items-start '>{isUserMessage? <UserAvatar />:<BotAvatar/>}</div>
         <div
-          className={`
-            max-w-[75%]
-            p-4
-            text-sm
-            rounded-lg
-            shadow-md text-wrap
-            ${isUserMessage 
-              ? "bg-violet-500 text-white rounded-br-none" 
-              : "bg-gray-200 text-gray-800 rounded-bl-none"}
-          `}
-        >
-          <Markdown>{message.content}</Markdown>
-          
-        </div>
+  className={`
+    max-w-[75%]
+    p-4
+    text-sm
+    rounded-lg
+    shadow-md
+    break-words
+    whitespace-pre-wrap
+    overflow-auto
+    ${isUserMessage 
+      ? "bg-violet-500 text-white rounded-br-none" 
+      : "bg-gray-200 text-gray-800 rounded-bl-none"}
+  `}
+>
+  <Markdown className="break-words whitespace-pre-wrap overflow-auto">{message.content}</Markdown>
+</div>
+
       </div>
     );
   })}

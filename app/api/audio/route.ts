@@ -45,7 +45,10 @@ export async function POST(req: Request) {
     console.log("buffer problem");
     const audioBuffer = Buffer.concat(audioBuffers);
     const audioBase64 = audioBuffer.toString("base64");
-    await increaseApiLimit();
+    if(!checkSubscriptionStatus){
+      await increaseApiLimit();
+    }
+    
     return NextResponse.json({ audio: `data:audio/mp3;base64,${audioBase64}` });
   } catch (error) {
 

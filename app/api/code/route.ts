@@ -45,7 +45,10 @@ export async function POST(req: Request) {
     const result = await model.generateContent(prompt);
     const generatedMessage = result.response?.text() || "No response generated";
     console.log("Generated message:", generatedMessage);
-    await increaseApiLimit();
+    if(!checkSubscriptionStatus){
+      await increaseApiLimit();
+    }
+ 
     return new NextResponse(JSON.stringify({ message: generatedMessage }), { status: 200 });
   } catch (error) {
     console.error("Code error occurred:", error);

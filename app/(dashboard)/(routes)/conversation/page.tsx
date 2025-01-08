@@ -143,13 +143,13 @@ const ConversationPage = () => {
             p-4
             text-sm
             rounded-lg
-            shadow-md text-wrap
+            shadow-md
             ${isUserMessage 
               ? "bg-violet-500 text-white rounded-br-none" 
               : "bg-gray-200 text-gray-800 rounded-bl-none"}
           `}
         >
-          <Markdown>{message.content}</Markdown>
+          <Markdown className="break-words whitespace-pre-wrap overflow-auto">{message.content}</Markdown>
       
         </div>
       </div>

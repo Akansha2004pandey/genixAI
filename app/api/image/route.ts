@@ -84,7 +84,10 @@ export async function POST(req: NextRequest) {
         console.log(urls);
       
     }
+    if(!checkSubscriptionStatus){
       await increaseApiLimit();
+    }
+  
     // Return the array of URLs
     return NextResponse.json({ success: true, urls });
   } catch (error) {
