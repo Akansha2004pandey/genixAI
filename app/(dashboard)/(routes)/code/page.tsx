@@ -2,7 +2,7 @@
 import React from 'react'
 import Heading from '@/components/Heading'
 import {useForm} from "react-hook-form";
-import {Code, MessageSquare, User} from 'lucide-react'
+import {Code} from 'lucide-react'
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import * as z from "zod";

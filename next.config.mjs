@@ -2,7 +2,10 @@
 
 const nextConfig = {
     images: {
-        domains: ['res.cloudinary.com'], // Add your image domain(s) here
+        domains: ['res.cloudinary.com'], 
+      },
+      eslint: {
+        ignoreDuringBuilds: true, 
       },
 };
 

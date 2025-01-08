@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAuth } from "@clerk/nextjs/server";
-import { ElevenLabsClient, stream } from "elevenlabs";
-import { Readable } from "stream";
+import { ElevenLabsClient} from "elevenlabs";
 import { increaseApiLimit } from "@/lib/api-limit";
 import { checkApiLimit } from "@/lib/api-limit";
 import { checkSubscription } from "@/lib/subscription";
