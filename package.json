@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall":"prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.9.0",
@@ -23,6 +24,7 @@
     "class-variance-authority": "^0.7.1",
     "cloudinary": "^2.5.1",
     "clsx": "^2.1.1",
+    "crisp-sdk-web": "^1.0.25",
     "elevenlabs": "^1.50.2",
     "firebase": "^11.1.0",
     "lucide-react": "^0.468.0",
@@ -32,11 +34,13 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.54.2",
+    "react-hot-toast": "^2.5.1",
     "react-markdown": "^9.0.1",
     "replicate": "^1.0.1",
     "stripe": "^17.5.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
+    "typewriter-effect": "^2.21.0",
     "zod": "^3.24.1",
     "zustand": "^5.0.2"
   },

@@ -5,6 +5,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import cloudinary from "../../../lib/cloudinary";
 import { increaseApiLimit } from "@/lib/api-limit";
 import { checkApiLimit } from "@/lib/api-limit";
+import { checkSubscription } from "@/lib/subscription";
 export async function POST(req: NextRequest) {
   try {
     const { userId } = getAuth(req);
@@ -22,7 +23,8 @@ export async function POST(req: NextRequest) {
     }
 
    const freeTrial=await checkApiLimit();
-    if(!freeTrial) {
+    const checkSubscriptionStatus=await checkSubscription();
+    if(!freeTrial && !checkSubscriptionStatus){
         return new NextResponse("Free trial limit reached", { status: 403 });
     } 
     const [width, height] = resolution.split("x").map(Number);

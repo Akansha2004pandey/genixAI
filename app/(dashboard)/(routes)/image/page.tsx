@@ -17,6 +17,7 @@ import UserAvatar from '@/components/userAvatar';
 import Loader from '@/components/ui/loader';
 import BotAvatar from '@/components/BotAvatar';
 import Markdown from 'react-markdown';
+import {toast} from "react-hot-toast";
 import { Select, SelectValue , SelectContent, SelectTrigger, SelectItem} from '@/components/ui/select';
 import { amountOptions, resolutionOptions} from './constants'; 
 import { useProModalStore } from '@/hooks/use-pro-modal';
@@ -52,6 +53,8 @@ const ImagePage = () => {
             if(error?.response?.status===403){
               proModal.onOpen();
 
+          }else{
+             toast.error("Something went wrong");
           }
         }
         finally{

@@ -3,6 +3,7 @@ import { getAuth } from "@clerk/nextjs/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { increaseApiLimit } from "@/lib/api-limit";
 import { checkApiLimit } from "@/lib/api-limit";
+import { checkSubscription } from "@/lib/subscription";
 // Ensure you use process.env for environment variables
 const genAI = new GoogleGenerativeAI(process.env.GENAI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" ,
@@ -31,7 +32,10 @@ export async function POST(req: Request) {
       return new NextResponse("Messages not found", { status: 400 });
     }
     const freeTrial=await checkApiLimit();
-    if(!freeTrial){
+    const checkSubscriptionStatus=await checkSubscription();
+
+    
+    if(!freeTrial && !checkSubscriptionStatus){
         return new NextResponse("Free trial limit reached", { status: 403 });
     }
 

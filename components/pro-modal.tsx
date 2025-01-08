@@ -11,6 +11,7 @@ import { Button } from "./ui/button";
 import axios from "axios";
 import { useState } from "react";
 import { set } from "zod";
+import {toast} from "react-hot-toast";  
 const tools=[
     {
       label:"Conversation",
@@ -56,7 +57,8 @@ export const ProModal = () => {
             setLoading(true);
             const response=await axios.get("/api/stripe");
             window.location.href=(await response).data.url;
-        }catch(error){
+        }catch(error){ 
+                toast.error("Error subscribing to pro");
                 console.log(error);
         }finally{
            setLoading(false);

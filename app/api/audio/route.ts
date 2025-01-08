@@ -4,6 +4,7 @@ import { ElevenLabsClient, stream } from "elevenlabs";
 import { Readable } from "stream";
 import { increaseApiLimit } from "@/lib/api-limit";
 import { checkApiLimit } from "@/lib/api-limit";
+import { checkSubscription } from "@/lib/subscription";
 const client = new ElevenLabsClient({
   apiKey: process.env.ELEVENLABS_API_KEY,
 });
@@ -22,7 +23,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Prompt is required" }, { status: 400 });
     }
     const freeTrial=await checkApiLimit();
-    if(!freeTrial) {
+     const checkSubscriptionStatus=await checkSubscription();
+    if(!freeTrial && !checkSubscriptionStatus){
         return NextResponse.json({ error: "Free trial limit reached" }, { status: 403 });
     }
 

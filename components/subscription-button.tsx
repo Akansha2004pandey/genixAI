@@ -4,7 +4,7 @@ import axios from "axios";
 import { Button } from "./ui/button";
 import { Zap } from "lucide-react";
 import { useState } from "react";
-
+import { toast } from "react-hot-toast";
 interface SubscriptionButtonProps {
   isPro: boolean;
 }
@@ -18,6 +18,7 @@ export const SubscriptionButton = ({ isPro = false }: SubscriptionButtonProps) =
       const response = await axios.get("/api/stripe");
       window.location.href = response.data.url; // Redirect to Stripe checkout
     } catch (error) {
+       toast.error("Billing error !!");
       console.error("Billing error", error);
     } finally {
       setLoading(false);

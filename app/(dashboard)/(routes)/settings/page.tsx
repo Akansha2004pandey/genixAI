@@ -2,9 +2,10 @@ import { checkSubscription } from "@/lib/subscription"
 import Heading from "@/components/Heading"
 import { Settings} from "lucide-react"
 import { SubscriptionButton } from "@/components/subscription-button";
+import { useState } from "react";
 const SettingsPage=async ()=>{
     const isPro=await checkSubscription();
-   
+
     return (
     <div>
         <Heading

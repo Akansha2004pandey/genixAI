@@ -4,6 +4,7 @@ import Heading from '@/components/Heading'
 import {useForm} from "react-hook-form";
 import {Code, MessageSquare, User} from 'lucide-react'
 import axios from "axios";
+import { toast } from "react-hot-toast";
 import * as z from "zod";
 import {useRouter} from "next/navigation";
 import {formSchema} from './constants'
@@ -31,7 +32,8 @@ const CodePage = () => {
     })
     const isLoading=form.formState.isSubmitting;
     const  onSubmit=async (value:z.infer<typeof formSchema>)=>{
-        try{
+        try{ 
+             
              const userMessage:ChatCompletionRequestMessage={
                 role:"user",
                 content:value.prompt
@@ -57,6 +59,8 @@ const CodePage = () => {
             if(error?.response?.status===403){
               proModal.onOpen();
 
+          } else{
+             toast.error("Something went wrong");
           }
         }
         finally{
