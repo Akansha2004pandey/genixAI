@@ -29,12 +29,7 @@ const routes=[
     href:"/image",
     color:"text-pink-700",
   },
-  {
-    label:"Video Generation",
-    icon:Video,
-    href:"/video",
-    color:"text-orange-500",
-  },
+  
   {
     label:"Audio Generation",
     icon:Music,

@@ -38,13 +38,6 @@ const tools=[
     href:"/image"
   },
   {
-    label:"Video Generation",
-    icon:VideoIcon,
-    color:"text-orange-500",
-    bgColor:"bg-orange-500/10",
-    href:"/video"
-  },
-  {
     label:"Code Generation",
     icon:Code,
     color:"text-green-500",
