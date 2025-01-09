@@ -10,7 +10,7 @@ const client = new ElevenLabsClient({
 
 export async function POST(req: Request) {
   try {
-    const { userId } = getAuth(req);
+    const { userId } = getAuth(req as any);
     const body = await req.json();
     const { prompt } = body;
 
