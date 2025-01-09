@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Genix AI - AI SaaS App
 
-## Getting Started
+Genix AI is a comprehensive AI-driven SaaS application built using **Next.js**, **Prisma** as ORM, and **MongoDB** as the database. It integrates cutting-edge AI technologies and services such as **Gemini API** for conversations and code generation, **Hugging Face** for text-to-image conversion, **Eleven Labs API** for text-to-audio synthesis, **Clerk** for user authentication, **Crisp** for customer support chatbot, **Stripe** for payment gateway, and is deployed on **Vercel**.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **AI Conversations & Code Generation**: Powered by **Gemini API** for dynamic conversational AI and code generation.
+- **Text-to-Image**: Use the **Hugging Face API** to generate images from textual descriptions.
+- **Text-to-Audio**: Convert text to realistic speech using the **Eleven Labs API**.
+- **User Authentication**: Secure authentication with **Clerk** for managing users and sessions.
+- **Customer Support Chatbot**: Integrated with **Crisp** for real-time support via chatbot.
+- **Payment Gateway**: Integrated **Stripe** for secure payments.
+- **Deployment**: Seamlessly deployed on **Vercel** for scalability and performance.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js (React-based framework)
+- **Backend**: Node.js (Next.js API routes)
+- **Database**: MongoDB (NoSQL Database) with **Prisma** as ORM
+- **Authentication**: **Clerk**
+- **AI Services**:
+  - **Gemini API** for AI-driven conversation and code generation
+  - **Hugging Face** for text-to-image conversion
+  - **Eleven Labs** for text-to-audio
+- **Customer Support**: **Crisp** for chatbot integration
+- **Payment Gateway**: **Stripe**
+- **Deployment**: **Vercel**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
