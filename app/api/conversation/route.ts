@@ -5,12 +5,12 @@ import { increaseApiLimit } from "@/lib/api-limit";
 import { checkApiLimit } from "@/lib/api-limit";
 import { checkSubscription } from "@/lib/subscription";
 // Ensure you use process.env for environment variables
-const genAI = new GoogleGenerativeAI(process.env.GENAI_API_KEY);
+const genAI = new GoogleGenerativeAI(process.env.GENAI_API_KEY!);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 export async function POST(req: Request) {
   try {
-    const { userId } = getAuth(req);
+    const { userId } = getAuth(req as any);
     const body = await req.json();
     const { messages } = body;
 

@@ -9,7 +9,7 @@ import { checkSubscription } from "@/lib/subscription";
 
 export async function POST(req: NextRequest) {
   try {
-    const { userId } = getAuth(req);
+    const { userId } = getAuth(req as any);
     const body = await req.json();
     const { prompt, amount = 1, resolution = "512x512" } = body;
 
