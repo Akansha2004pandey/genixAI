@@ -11,7 +11,7 @@ import {zodResolver} from '@hookform/resolvers/zod'
 import {Form, FormControl, FormField, FormItem} from '@/components/ui/form'
 import {Input} from '@/components/ui/input'
 import {Button} from '@/components/ui/button'
-import ChatCompletionRequestMessage from "openai";
+
 import {useState} from "react";
 import UserAvatar from '@/components/userAvatar';
 import Loader from '@/components/ui/loader';
@@ -19,6 +19,10 @@ import BotAvatar from '@/components/BotAvatar';
 import Markdown from 'react-markdown';
 import { useProModalStore } from '@/hooks/use-pro-modal'
 import toast from 'react-hot-toast';
+type ChatCompletionRequestMessage = {
+  role: "user" | "assistant" | "system";
+  content: string;
+};
 const ConversationPage = () => {
     const router=useRouter();
     const proModal=useProModalStore();
