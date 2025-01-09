@@ -20,7 +20,7 @@ const DashboardLayout =async ({
            </div>
            <main className="md:pl-72">
            
-            <Navbar apiLimit={apiLimit}/>
+            <Navbar apiLimit={apiLimit} isPro={isPro}/>
             {children}
            </main>
        
