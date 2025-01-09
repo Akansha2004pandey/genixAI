@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
       
       const buffer = await resultBlob.arrayBuffer();
         const bufferData = Buffer.from(buffer);
-        const uploadResult = await new Promise((resolve, reject) => {
+        const uploadResult = await new Promise<any>((resolve, reject) => {
           const uploadStream = cloudinary.uploader.upload_stream(
             { folder: "blog-website" },
             (error, result) => {
