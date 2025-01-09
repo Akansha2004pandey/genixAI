@@ -10,7 +10,7 @@ const UserAvatar = () => {
   return (
     <div>
       <Avatar className="h-8 w-8">
-        <AvatarImage src={user?.profileImageUrl || ''} alt="Avatar" />
+        <AvatarImage src={''} alt="Avatar" />
         <AvatarFallback>
           {user?.firstName?.charAt(0)}
           {user?.lastName?.charAt(0)}
