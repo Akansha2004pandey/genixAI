@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
           },
           method: "POST",
           body: JSON.stringify({
-            inputs: prompt, // Send prompt directly as the string in 'inputs'
+            inputs: prompt, 
             width: targetSize[0],
             height : targetSize[1], 
           }),
@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
           uploadStream.end(bufferData);
         });
   
-        // Store the URL in the array
+
         urls.push(uploadResult.secure_url);
         console.log(urls);
       
@@ -89,7 +89,6 @@ export async function POST(req: NextRequest) {
       await increaseApiLimit();
     }
   
-    // Return the array of URLs
     return NextResponse.json({ success: true, urls });
   } catch (error) {
     console.error("Error occurred:", error);
