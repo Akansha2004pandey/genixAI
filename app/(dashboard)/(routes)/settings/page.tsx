@@ -5,7 +5,6 @@ import { SubscriptionButton } from "@/components/subscription-button";
 import { useState } from "react";
 const SettingsPage=async ()=>{
     const isPro=await checkSubscription();
-
     return (
     <div>
         <Heading
